@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css"/>
+
+    </head>
+
+    <body>
+        <div id="o-container">
+            <div id="banner">
+                <div class="headFoot">SWAD Family Restaurant</div>
+            </div>
+            <div id="main">
+              <div id="billing-part">
+                    <div id="bill-section">
+                         <div id="bill-heads">
+                            <div id="dttime">Date Time</div>
+                            <div >T.N&nbsp;<span id="tblno"></span></div>
+                            <div class="head1">Particulars</div>
+                            <div class="head2">Amount</div>
+                        </div>
+                        <div id="bill-dtls">
+                        </div>
+                    </div>
+                    <div id="table-list">
+                        <input type="button" id="clearBtn" value="Clear" onclick="clearBill()"/>
+                    
+                        <table border="1" id="tbl-tbl" style="width: 90%; border-collapse: collapse;">
+                        
+                        </table> 
+                    </div> 
+                </div>
+           
+                <div id="menu-section">
+ <!--                   <div class="menu-item">
+                        <div class="img-div">
+                        <img  class = "img" src="images/1.jpg" />
+                        </div>
+                        <div class="item-name">
+                            Dahi Samosa
+                        </div>
+                        <div class="item-rate">Rs. 30/-</div>
+
+                    </div>  -->
+                </div>
+            </div>
+            <div id="footer">
+                <div class="headFoot">Developed by Vaikuntha Computers, Gondia</div>
+            </div>
+        </div>
+        <script src="restaurent_data.js"></script>
+        <script src="main.js"></script>
+
+        <script>
+            showMenu();
+        </script>
+    </body>
+</html>

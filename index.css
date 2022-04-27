@@ -1,0 +1,208 @@
+body {
+    margin: 0;
+}
+#o-container {
+    width:100vw;
+    height:100vh;
+    display:grid;
+    margin:0;
+    gap:1vh;
+    grid-template-rows:auto 1fr auto;
+    background-color: rgb(11, 57, 57);
+}
+#banner {
+    width:100%;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: rgb(35, 1, 1);
+    color:white;
+    
+}
+#footer {
+    width:100%;
+    font-size:1rem;
+    background-color: black;
+    color:white;
+}
+.headFoot {
+    padding:1vh 2vw;
+}
+#menu-section {
+    padding:0.2vh 1vw;
+    margin:0;
+    height: 85vh;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+#main {
+    width:100%;
+    padding: 0.5vh 0.5vw;
+    margin:0;
+    display: grid;
+    gap:5px;
+    grid-template-columns: 50% 50%;
+
+}
+    
+
+.menu-item {
+    padding: 0.5vh 0.5vw;
+    border-style: solid;
+    border-radius: 1rem;
+    margin-right:1vw;
+    background-color: blueviolet;
+    display: grid;
+    gap:5px;
+    grid-template-columns: auto auto;
+    grid-template-areas : "img iname" "img irate";
+ }
+.img-div{
+    grid-area: img;
+}
+.img {
+    height:12vh;
+    width:8vw;
+    border-style: solid;
+    border-radius: 1rem;
+    border-color: brown;
+   
+}
+.item-rate {
+    font-size: large;
+    color : white;
+    font-weight: bold;
+    grid-area:rate;
+    grid-area : irate;
+
+}
+.item-name{
+    font-size: large;
+    color : white;
+    font-weight: bold;
+    grid-area: iname;
+
+}
+#billing-part {
+    display:grid;
+    grid-template-rows: 75% 25%;
+}
+#table-list {
+    background-color: darkgray;
+    max-width: 400px;
+    overflow: auto;
+ 
+}
+#bill-section {
+    background-color: bisque;
+    max-width: 400px;
+    max-height: 99%;
+}
+#dttime {
+    padding-left: 1rem;
+}
+#bill-heads {
+    display: grid;
+    grid-template-columns: 74% 25% ;
+    grid-row-gap:4vmin;
+ /*   grid-column-gap: 2vmin;
+    max-width: 30vw;*/
+    margin-top: 1vh;
+    border-bottom : 2px solid rgb(39, 2, 2);
+
+}
+.head1 {
+    padding-left: 1vw;
+     background-color: rgb(240, 215, 182);
+    font-weight: bold;
+    
+}
+.head2 {
+    padding-left: 2vw;
+     background-color: rgb(240, 215, 182);
+    font-weight: bold;
+    
+}
+#bill-dtls{
+    overflow: auto;
+}
+.bill-row {
+    display:grid;
+    grid-template-columns: 35% 6% 14% 15% 23% 6%;
+    padding: 0.5vh 0.5vw;
+    border-bottom-style: solid;
+    background-color: rgb(240, 215, 182);
+}
+.bill-row > div > input {
+    color:red;
+}
+.b-item {
+    padding-left: 0.5vw;
+    text-align: left;
+}
+ .brate, .b-amt {
+    padding-right: 0.5vw;
+    text-align: right;
+}
+.b-qty {
+    padding-right: 0.5vw;
+    text-align: center;
+   
+}
+#clearBtn{
+    width: 70%;
+    background-color: red;
+    text-align: center;
+    border-radius: 1rem;
+    height: 2rem;
+    margin :0.5rem 1rem 0rem 4rem;
+    padding-left: 1rem;
+    padding-right:1rem;
+    font-size: 1.5rem;
+}
+#clearBtn:hover {
+    color:white;
+    border-color:rgb(11, 1, 1)
+}
+#tbl-tbl {
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+#tbl-tbl > tbody> tr > td {
+    background-color: rgb(140, 239, 140);
+    text-align: center;
+    padding: 1px;
+    min-width: 8%;
+    min-height: 8%;
+    border-width: 0.4em;
+    border-color: black;
+    font-size: large;
+}
+#tbl-tbl > tbody > tr> td:hover{
+    border-width: 0.6em;
+    border-color: green;
+    background-color: aquamarine;
+}
+
+@media (max-width: 800px) {
+    #main {
+        width:100%;
+        padding: 0.5vh 0.5vw;
+        margin:0;
+        display: grid;
+        gap:5px;
+        grid-template-columns: 75% 25%;
+    
+    }
+    #menu-section {
+        padding:0.2vh 1vw;
+        margin:0;
+        height: 85vh;
+        display: grid;
+        grid-template-columns: auto;
+        overflow: auto;
+
+    }
+    
+    
+}
