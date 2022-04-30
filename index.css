@@ -104,24 +104,25 @@ body {
 #bill-heads {
     display: grid;
     grid-template-columns: 74% 25% ;
-    grid-row-gap:4vmin;
- /*   grid-column-gap: 2vmin;
-    max-width: 30vw;*/
+    grid-row-gap:2vmin;
     margin-top: 1vh;
     border-bottom : 2px solid rgb(39, 2, 2);
 
+}
+
+.totamt {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 .head1 {
     padding-left: 1vw;
      background-color: rgb(240, 215, 182);
     font-weight: bold;
-    
 }
 .head2 {
     padding-left: 2vw;
      background-color: rgb(240, 215, 182);
     font-weight: bold;
-    
 }
 #bill-dtls{
     overflow: auto;

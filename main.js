@@ -24,6 +24,7 @@ function clearBill(){
     $('bill-dtls').innerHTML="";
     setTableColor(activeTableNo,"rgb(140, 239, 140)");
     activeTableNo=0;
+    $('tot').innerText="";
  
 }
 function tableBillIndex(n){
@@ -34,24 +35,8 @@ function tableBillIndex(n){
 }
 function saveCurrentBill(){
     n = tableBillIndex(activeTableNo);
-    let bill;
     if(n == -1){
-        bill = new Bill();
-        bill.dttime = $('dttime').innerText;
-        bill.tableNo = $('tblno').innerText;
         bills.push(bill);
-    } else {
-        bill = bills[n];
-        bill.billRows = [];
-    }
-    let rows = $$('bill-row');
-    for(i=0;i<rows.length;i++){
-        let chld = rows[i].children;
-        let item = chld[0].innerText;
-        let  qty = parseInt(chld[2].innerText);
-        let rate = parseInt(chld[3].innerText);
-        let brow = new BillRow(item,qty,rate);
-        bill.addBillRow(brow);
     }
 }
 function showCurrentBill(){
@@ -61,14 +46,18 @@ function showCurrentBill(){
         const d = new Date();
         $('dttime').innerText = d.toLocaleString();
         $('tblno').innerText = activeTableNo;
+        bill = new Bill(activeTableNo);
+        $('tot').innerText="";
+        console.log('tot'+bill.billAmount);
         return;
     } 
-    let bill = bills[n];
-    $('dttime').innerText=bill.dttime;
+    bill = bills[n];
+    $('dttime').innerText=bill.dttime.toLocaleString();
     $('tblno').innerText = bill.tableNo;
     for(i=0;i<bill.billRows.length;i++){
         createBillRow(bill.billRows[i]);
     }        
+    $('tot').innerText=bill.billAmount;
 
 }
 function setTableColor(tblno,p_color){
@@ -114,6 +103,10 @@ function showMenu(){
     }
 }
 function addItem(n) {
+    if(activeTableNo==0){
+        alert("Please select Table");
+        return;
+    }
     let rows = $$('bill-row');
     for(i=0;i<rows.length;i++){
         let chld = rows[i].children;
@@ -123,10 +116,16 @@ function addItem(n) {
             let amt = qty * rate;
             chld[2].innerText = qty;
             chld[4].innerText = amt.toFixed(2);
+            let brow = bill.getBillRow(mitems[n]);
+            brow.qty=qty;
+            $('tot').innerText=bill.billAmount;
+    
             return;
         }
     }
-    let brow = new BillRow(mitems[n],1,mrates[n])
+    let brow = new BillRow(mitems[n],1,mrates[n]);
+    bill.billRows.push(brow);
+    $('tot').innerText=bill.billAmount;
     createBillRow(brow);
    
 }
@@ -151,13 +150,17 @@ function createBillRow(brow){
 function delBillRow(btn){
     let brow = btn.parentElement.parentElement;
  //   console.log("A");
+     bill.removeItem(brow.children[0].innerText);
+    $('tot').innerText=bill.billAmount;
     brow.remove();
+
 }
 function reduceQty(btn){
     let brow = btn.parentElement.parentElement;
     let chld = brow.children;
     let qty = parseInt(chld[2].innerText);
     if(qty==1){
+        bill.removeItem(brow.children[0].innerText);
         brow.remove();
     } else {
         qty=qty-1;
@@ -165,8 +168,11 @@ function reduceQty(btn){
         amt = qty*rate;
         chld[2].innerText = qty;
         chld[4].innerText = amt.toFixed(2);
+        let brow = bill.getBillRow(chld[0].innerText);
+        brow.qty=qty;
     }
-    console.log(qty);
+     $('tot').innerText=bill.billAmount;
+        console.log(qty);
   //  brow.remove();
 }
 
