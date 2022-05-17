@@ -57,6 +57,10 @@ body {
     grid-template-columns: auto auto;
     grid-template-areas : "img iname" "img irate";
  }
+ .menu-item:hover {
+    background-color: rgb(177, 130, 222);
+  
+ }
 .img-div{
     grid-area: img;
 }

@@ -48,7 +48,7 @@ function showCurrentBill(){
         $('tblno').innerText = activeTableNo;
         bill = new Bill(activeTableNo);
         $('tot').innerText="";
-        console.log('tot'+bill.billAmount);
+ //       console.log('tot'+bill.billAmount);
         return;
     } 
     bill = bills[n];
@@ -61,8 +61,9 @@ function showCurrentBill(){
 
 }
 function setTableColor(tblno,p_color){
-    let vrno = parseInt(tblno/tbl_cols);
-    let vcno = (tblno-10*vrno) % tbl_cols;   
+     let vrno = parseInt(tblno/tbl_cols);
+    let vcno = tblno % tbl_cols;
+    if(vcno==0){vrno=vrno-1;vcno=10}   
     $('tbl-tbl').rows[vrno].cells[vcno-1].style.backgroundColor=p_color;
 }
 function getTable(c){
@@ -74,8 +75,9 @@ function getTable(c){
             setTableColor(activeTableNo,"rgb(140, 239, 140)");
         }
     }
-    c.style.backgroundColor = "red";
+//    c.style.backgroundColor = "red";
     activeTableNo= parseInt(c.innerText);
+    setTableColor(activeTableNo,"red");
     showCurrentBill();
 }
 
@@ -106,7 +108,7 @@ function addItem(n) {
     if(activeTableNo==0){
         alert("Please select Table");
         return;
-    }
+    } 
     let rows = $$('bill-row');
     for(i=0;i<rows.length;i++){
         let chld = rows[i].children;
@@ -122,7 +124,7 @@ function addItem(n) {
     
             return;
         }
-    }
+    } 
     let brow = new BillRow(mitems[n],1,mrates[n]);
     bill.billRows.push(brow);
     $('tot').innerText=bill.billAmount;
